@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+@import './reset';
+@import './mixin';
+@import './variables';
+
+
+@import './view/footer.scss';
+@import './view/header.scss';
+@import './view/home.scss';
+@import './view/product.scss';
+@import './view/cart.scss';
+@import './view/order.scss';
+@import './view/login.scss';
+@import './view/productDetail.scss';
+@import './view/checkout.scss';
+
+
+@import './view/common/container.scss';
+@import './view/common/appLayout.scss';
+@import './view/common/Card.scss';
+
+@import './view/layouts/dashboard.scss';
+
+@import './view/dashboard/sidebar.scss';

@@ -1,0 +1,25 @@
+.dashboard-sidebar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding: 20px 10px;
+    gap: 5px;
+    .sidebar-item {
+        padding: 15px 30px;
+        display: flex;
+        gap: 10px;
+        border-radius: 10px;
+
+        &:hover {
+            background-color: $blue;
+            color: $white;
+            opacity: .7;
+        }
+
+        &.active {
+            background-color: $blue;
+            color: $white;
+        }
+    }
+}

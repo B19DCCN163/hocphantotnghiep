@@ -1,0 +1,69 @@
+.app-login {
+    padding-top: 100px;
+    min-height: calc(100vh - 180px);
+
+
+    .login-container {
+        display: flex;
+        justify-content: center;
+
+        .login-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            width: 450px;
+            padding: 25px 20px;
+            border-radius: 10px;
+
+            .heading {
+                font-size: 24px;
+                font-weight: 500;
+
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                align-items: start;
+                width: 100%;
+
+                .form-input {
+                    width: 100%;
+
+                    input {
+                        padding: 10px;
+                        border: 1px solid gray;
+                        border-radius: 8px;
+                        width: 100%;
+                    }
+
+
+                }
+
+                input[type="submit"] {
+                    width: 100%;
+                    padding: 10px;
+                    background-color: $azure;
+                    border-radius: 8px;
+                    color: white;
+                    font-size: 16px;
+                    font-weight: 500;
+                    font-family: 'Open Sans', sans-serif !important;
+                }
+
+                .form-checkbox {
+                    display: flex;
+                    gap: 10px;
+                }
+            }
+
+            .btn-redirect {
+                color: $azure;
+                font-style: italic;
+            }
+        }
+    }
+
+}

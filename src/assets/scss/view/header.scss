@@ -1,0 +1,97 @@
+.app-header {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 0px 8px 0px;
+    background-color: $black;
+    color: white;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 99;
+
+    .header-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+
+        .header-left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+
+            .header-item {
+                font-weight: 500;
+
+                .active {
+                    background: rgb(255, 217, 0);
+                    color: $black;
+                    padding: 10px;
+                    border-radius: 10px;
+                }
+            }
+
+            .logo {
+                height: 50px;
+
+            }
+
+            .sub-name {
+                span {
+                    font-size: 17px;
+                    font-weight: 600;
+                }
+            }
+
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
+
+        .header-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            input {
+                border: 1px solid gray;
+                width: 100%;
+                padding: 10px 15px;
+                border-radius: 10px;
+                background-color: white;
+                color: #000;
+            }
+        }
+
+        .header-right {
+            display: flex;
+            gap: 12px;
+
+            .header-item {
+                border-left: 1px solid gray;
+                padding-left: 10px;
+
+                .icon {
+                    display: flex;
+                    gap: 5px;
+                }
+
+                &:hover {
+                    color: rgb(255, 204, 0);
+                }
+
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .header-item:first-child {
+                border: none;
+            }
+        }
+    }
+}
