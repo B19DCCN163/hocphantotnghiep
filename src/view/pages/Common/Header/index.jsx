@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Container from '../Container'
 import { Link, NavLink } from 'react-router-dom'
+import { AuthContext } from '../../../../context/AuthContext'
+import { CartContext } from '../../../../context/CartContext'
 function Header() {
+    const { accessToken, setAccessToken } = useContext(AuthContext)
+    const { cartItems } = useContext(CartContext)
     return (
         <div className='app-header'>
             <Container>
@@ -21,26 +25,32 @@ function Header() {
                         <input type="text" placeholder='Tìm kiếm sản phẩm' />
                     </div>
                     <div className="header-right">
-                        <div className="header-item">
+                        <Link to="/cart" className="header-item">
                             <div className="icon">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                <span>(3)</span>
+                                <i className="fa-solid fa-cart-shopping"></i>
+                                <span>({cartItems.length})</span>
                             </div>
-                            <Link to="/cart">Giỏ hàng</Link>
-                        </div>
-                        <div className="header-item">
+                            <div >Giỏ hàng</div>
+                        </Link>
+                        <Link to="/admin" className="header-item">
                             <div className="icon">
-                                <i class="fa-solid fa-circle-info"></i>
+                                <i className="fa-solid fa-circle-info"></i>
                             </div>
-                            <Link to="/admin">Admin</Link>
-                        </div>
-                        <div className="header-item">
+                            <div>Admin</div>
+                        </Link>
+                        {accessToken ? <Link to="/account" className="header-item">
                             <div className="icon">
-                                <i class="fa-solid fa-circle-info"></i>
+                                <i className="fa-solid fa-user"></i>
                             </div>
-                            <Link to="/login">Đăng nhập</Link>
-                        </div>
-
+                            <div>Tài khoản</div>
+                        </Link> :
+                            <Link to="/login" className="header-item">
+                                <div className="icon">
+                                    <i className="fa-solid fa-user"></i>
+                                </div>
+                                <div>Đăng nhập</div>
+                            </Link>
+                        }
                     </div>
                 </div>
             </Container>

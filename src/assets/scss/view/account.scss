@@ -1,0 +1,243 @@
+.app-account {
+    display: flex;
+    // background-color: $gray-light;
+    border: 1px solid $gray-light;
+    height: calc(100vh - 180px);
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 20px;
+    gap: 32px;
+
+    .heading {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .account-main {
+        display: flex;
+    }
+
+    .sidebar {
+        width: 250px;
+        border-right: 1px solid $gray;
+        padding-right: 20px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        .user-info {
+            display: flex;
+            gap: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            color: $azure;
+            padding-bottom: 20px;
+        }
+
+        .user-option {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+            .user-item {
+                padding: 10px;
+                cursor: pointer;
+                border-radius: 8px;
+
+                &.active {
+                    color: white;
+                    background-color: $azure;
+                }
+            }
+        }
+        .user-logout{
+            color: red;
+            cursor: pointer;
+            padding: 10px;
+            &:hover{
+                opacity: .6;
+            }
+
+        }
+    }
+
+    .outlet {
+        width: 100%;
+        flex: 1;
+        height: 100%;
+        overflow: hidden;
+        padding-left: 30px;
+    }
+}
+
+.account-info {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    height: calc(100vh - 270px);
+
+    .heading {
+        font-size: 18px;
+        font-weight: 600;
+        color: $azure;
+        line-height: 125%;
+    }
+
+    .chart {
+        display: flex;
+        flex-direction: column;
+
+        h6 {
+            padding-left: 180px;
+            font-style: italic;
+        }
+    }
+
+    .info {
+
+        .username {
+            display: flex;
+            gap: 5px;
+        }
+
+        .btn-account {
+            padding-top: 20px;
+            color: $blue;
+            font-style: italic;
+        }
+    }
+
+}
+
+.account-orders {
+    padding-top: 10px;
+    overflow-y: auto;
+    height: calc(100vh - 270px);
+    padding-bottom: 10px;
+
+    .heading {
+        font-size: 18px;
+        font-weight: 600;
+        color: $azure;
+    }
+
+    .list-order {
+        margin-top: 20px;
+        display: flex;
+        gap: 25px;
+        flex-direction: column;
+
+        .order-item {
+            padding: 10px;
+            border-radius: 8px;
+            background-color: rgba(0, 166, 255, 0.182);
+
+            .heading {
+                color: black;
+                font-size: 16px;
+                font-weight: 500;
+                text-transform: uppercase;
+                padding-bottom: 10px;
+            }
+
+            .time {
+                color: orangered;
+            }
+        }
+    }
+
+    .product-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+
+        .product-item {
+            display: flex;
+            gap: 24px;
+            border: 1px solid $border-section;
+            padding: 10px 15px;
+            border-radius: 10px;
+
+            .img {
+                height: 80px;
+                width: 80px;
+            }
+
+            .cart-desc {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                flex: 1;
+                padding: 10px 0;
+
+                .item-name {
+                    font-size: 16px;
+                    font-weight: 500;
+
+                }
+
+                &>div {
+                    display: flex;
+                    gap: 5px;
+
+                    .title {
+                        font-style: italic;
+                        font-weight: 500;
+                        font-size: 13px;
+                    }
+                }
+
+                .item-price {
+                    .value {
+                        color: red;
+                    }
+                }
+
+            }
+
+            .item-btn {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                align-self: flex-end;
+                justify-content: end;
+
+                .btn-remove>span {
+                    color: red;
+                    font-style: italic;
+                    display: flex;
+                    justify-content: end;
+                    font-size: 13px;
+                }
+
+                .quatity-box {
+                    display: flex;
+                    gap: 5px;
+                    align-items: center;
+                    justify-content: center;
+
+                    i {
+                        font-size: 13px;
+                    }
+
+                    .number {
+                        padding: 10px;
+
+                    }
+                }
+            }
+        }
+    }
+
+    .order-total {
+        padding: 15px 0;
+        font-size: 16px;
+        font-weight: 500;
+
+        span {
+            color: red;
+        }
+    }
+}

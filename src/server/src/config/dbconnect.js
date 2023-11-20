@@ -4,7 +4,7 @@ const pool = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: '123456789',
+    password: '12345679',
     database: 'shopdan',
     waitForConnections: true,
     connectionLimit: 10,
@@ -16,4 +16,6 @@ const pool = mysql.createConnection({
 
 });
 
-module.exports = pool
+const promisePool = pool.promise();
+
+module.exports = promisePool

@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Container from '../Common/Container'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../../context/AuthContext'
 function Register() {
+
+    const { accessToken } = useContext(AuthContext)
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (accessToken) {
+            navigate('/')
+        }
+    }, [])
     return (
         <div className='app-login'>
             <Container>

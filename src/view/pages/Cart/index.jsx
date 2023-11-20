@@ -1,7 +1,26 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { CartContext } from '../../../context/CartContext'
+import { AuthContext } from '../../../context/AuthContext'
+import { toast } from 'react-toastify'
 
 const Cart = () => {
+    const { cartItems, addToCart, removeFromCart, getCartTotal } = useContext(CartContext)
+    const { accessToken } = useContext(AuthContext)
+    console.log(cartItems)
+    const navigate = useNavigate()
+    const handleCheckout = () => {
+        if (!accessToken) {
+            toast("Bạn chưa đăng nhập")
+            return
+        }
+        if (cartItems.length < 1) {
+            toast.error("Vui lòng thêm sản phẩm vào giỏ")
+            return
+        }
+        navigate('checkout')
+
+    }
     return (
         <div className='app-cart'>
             <div className="cart-heading">
@@ -9,127 +28,96 @@ const Cart = () => {
             </div>
             <div className="cart-main">
                 <div className="cart-items">
-                    <div className="cart-item">
-                        <div className="img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJh86uHNZXjgBFGQogwz-pSOAbjtc3C9S8KA&usqp=CAU" alt="" />
-                        </div>
-                        <div className="cart-desc">
-                            <p className="item-name">
-                                Đồ gốm rẻ rách
-                            </p>
-                            <div className="item-quantity">
-                                <span className='title'>
-                                    Số lượng:
-                                </span>
-                                <span className='value'>
-                                    2
-                                </span>
-                            </div>
-                            <div className="item-price">
-                                <span className='title'>
-                                    Giá:
-                                </span>
-                                <span className='value'>
-                                    100.000VND
-                                </span>
-                            </div>
-                        </div>
-                        <div className="item-btn">
-                            <div className="btn-remove">
-                                <span>Xóa</span>
-                            </div>
-                            <div className="quatity-box">
-                                <div>
-                                    <i class="fa-solid fa-minus"></i>
+                    {cartItems.length > 0 ?
+                        cartItems.map((item, index) => (
+                            <div className="cart-item" key={item.id}>
+                                <div className="img">
+                                    <img src={item.thumb_url} alt="" />
                                 </div>
-                                <div className='number'>
-                                    3
+                                <div className="cart-desc">
+                                    <p className="item-name">
+                                        {item.name}
+                                    </p>
+                                    <div className="item-quantity">
+                                        <span className='title'>
+                                            Số lượng:
+                                        </span>
+                                        <span className='value'>
+                                            {item.quantity}
+                                        </span>
+                                    </div>
+                                    <div className="item-price">
+                                        <span className='title'>
+                                            Giá:
+                                        </span>
+                                        <span className='value'>
+                                            {item.base_price * item.quantity}VND
+                                        </span>
+                                    </div>
                                 </div>
-                                <div>
-                                    <i className="fa-solid fa-plus"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* test */}
-                    <div className="cart-item">
-                        <div className="img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJh86uHNZXjgBFGQogwz-pSOAbjtc3C9S8KA&usqp=CAU" alt="" />
-                        </div>
-                        <div className="cart-desc">
-                            <p className="item-name">
-                                Đồ gốm rẻ rách
-                            </p>
-                            <div className="item-quantity">
-                                <span className='title'>
-                                    Số lượng:
-                                </span>
-                                <span className='value'>
-                                    2
-                                </span>
-                            </div>
-                            <div className="item-price">
-                                <span className='title'>
-                                    Giá:
-                                </span>
-                                <span className='value'>
-                                    100.000VND
-                                </span>
-                            </div>
-                        </div>
-                        <div className="item-btn">
-                            <div className="btn-remove">
-                                <span>Xóa</span>
-                            </div>
-                            <div className="quatity-box">
-                                <div>
-                                    <i class="fa-solid fa-minus"></i>
-                                </div>
-                                <div className='number'>
-                                    3
-                                </div>
-                                <div>
-                                    <i className="fa-solid fa-plus"></i>
+                                <div className="item-btn">
+                                    <div className="quatity-box">
+                                        <div onClick={() => removeFromCart({
+                                            base_price: item.base_price,
+                                            description: item.description,
+                                            id: item.id,
+                                            name: item.name,
+                                            stock: item.stock,
+                                            thumb_url: item.thumb_url
+                                        })}>
+                                            <i className="fa-solid fa-minus"></i>
+                                        </div>
+                                        <div className='number'>
+                                            {item.quantity}
+                                        </div>
+                                        <div onClick={() => addToCart({
+                                            base_price: item.base_price,
+                                            description: item.description,
+                                            id: item.id,
+                                            name: item.name,
+                                            stock: item.stock,
+                                            thumb_url: item.thumb_url
+                                        })}>
+                                            <i className="fa-solid fa-plus"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    {/* tesst */}
-
+                        )) :
+                        <h6>Giỏ hàng trống</h6>
+                    }
                 </div>
-                <div class="payment-detail">
-                    <h3 class="title">Thanh toán</h3>
-                    <div class="payment-box">
-                        <div class="payment-top">
-                            <div class="payment-subtotal">
-                                <span class="left"> Tổng tiền sản phẩm </span>
-                                <span class="right">
-                                    200.000 VND
+                <div className="payment-detail">
+                    <h3 className="title">Thanh toán</h3>
+                    <div className="payment-box">
+                        <div className="payment-top">
+                            <div className="payment-subtotal">
+                                <span className="left"> Tổng tiền sản phẩm </span>
+                                <span className="right">
+                                    {getCartTotal()} VND
                                 </span>
                             </div>
-                            <div class="payment-discount">
-                                <span class="left"> Giảm giá (0%) </span>
-                                <span class="right"> 0đ </span>
+                            <div className="payment-discount">
+                                <span className="left"> Giảm giá (0%) </span>
+                                <span className="right"> 0đ </span>
                             </div>
-                            <div class="payment-ship">
-                                <span class="left"> Phí vận chuyển </span>
-                                <span class="right"> 0đ </span>
+                            <div className="payment-ship">
+                                <span className="left"> Phí vận chuyển </span>
+                                <span className="right"> 0đ </span>
                             </div>
                         </div>
-                        <div class="payment-bottom">
-                            <div class="left">Tổng thanh toán</div>
-                            <div class="right">
-                                200.000 VND
+                        <div className="payment-bottom">
+                            <div className="left">Tổng thanh toán</div>
+                            <div className="right">
+                                {getCartTotal()} VND
                             </div>
                         </div>
                     </div>
-                    <Link to="/cart/checkout" class="payment-btn">
+                    <div onClick={handleCheckout} className="payment-btn">
                         <button>
-                            <Link to="/cart/checkout">Tới trang thanh toán</Link>
+                            <div>Tới trang thanh toán</div>
                         </button>
-                    </Link>
+                    </div>
                 </div>
             </div>
         </div>

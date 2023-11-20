@@ -1,6 +1,181 @@
-.cart-checkout{
+.cart-checkout {
     display: flex;
-    .info-shipment{
-        min-height: calc(100vh - 180px)
+    gap: 32px;
+
+    .info-shipment {
+        min-height: calc(100vh - 180px);
+        width: 100%;
+        flex: 1;
+        background: $gray-light;
+        padding: 20px;
+        border-radius: 10px;
+
+
+        h1 {
+            font-size: 18px;
+            font-weight: 500;
+            color: $azure;
+        }
+
+        display: flex;
+        flex-direction: column;
+        gap:10px;
+
+        .info-user {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            padding: 20px;
+
+            h2 {
+                font-size: 16px;
+                font-weight: 400;
+            }
+
+            input {
+                border-bottom: 1px solid $black;
+                padding: 10px 15px;
+                width: 100%;
+
+                &::placeholder {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .list-product {
+        width: 500px;
+        padding-top: 30px;
+
+        .heading {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: $azure;
+        }
+
+        .product-items {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            .product-item {
+                display: flex;
+                gap: 10px;
+                font-weight: 600;
+
+                .name {
+                    flex: 1px;
+                }
+
+                .price {
+                    color: red;
+                }
+            }
+        }
+
+        .payment {
+            margin: 25px 0;
+
+            .payment-detail {
+                width: 450px;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                padding-top: 10px;
+
+                @include min-lg {
+                    width: 380px;
+                }
+
+                .title {
+                    font-size: 18px;
+                    font-weight: 600;
+
+                }
+
+                .payment-box {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+
+                    .payment-top {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                        padding-bottom: 16px;
+                        border-bottom: 1px solid $border-section;
+
+                        &>div {
+                            display: flex;
+                            justify-content: space-between;
+                            color: $gray;
+
+                            .left {
+                                font-size: 14px;
+                                font-weight: 500;
+                            }
+
+                            .right {
+                                font-weight: 400;
+                            }
+                        }
+                    }
+
+                    .payment-bottom {
+                        display: flex;
+                        justify-content: space-between;
+
+                        .left {
+                            font-size: 16px;
+                            font-weight: 600;
+                        }
+
+                        .right {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: red;
+                        }
+                    }
+                }
+
+                .payment-btn {
+                    button {
+                        width: 100%;
+                        height: 100%;
+                        border: unset;
+                        padding: 15px;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        font-weight: 500;
+                        color: $white;
+                        background-color: red;
+                        cursor: pointer;
+                        font-family: 'Open Sans', sans-serif !important;
+
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
+                }
+            }
+        }
+
+        .btn-buy {
+            border-top: 1px solid $gray;
+            padding: 20px 0;
+            button{
+                padding: 10px 15px;
+                background-color: $blue;
+                color: white;
+                font-weight: 500;
+                border-radius: 8px;
+                &:hover{
+                    opacity: .8;
+                }
+            }
+        }
     }
 }

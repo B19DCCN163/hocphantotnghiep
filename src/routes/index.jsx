@@ -12,6 +12,10 @@ import DashboardLayout from "../view/layouts/DashboardLayout";
 import ManageProduct from "../view/pages/AdminDashboard/ManageProduct";
 import ManageOrder from "../view/pages/AdminDashboard/ManageOrder";
 import ManageUser from "../view/pages/AdminDashboard/ManageUser";
+import Account from "../view/pages/Account";
+import Info from "../view/pages/Account/Info";
+import Orders from "../view/pages/Account/Orders";
+import AccountHome from "../view/pages/Account/Home";
 
 
 const routes = [
@@ -40,13 +44,31 @@ const routes = [
                 element: <Register />
             },
             {
-                path: "product",
+                path: "product/:id",
                 element: <ProductDetail />
             },
             {
                 path: "cart/checkout",
                 element: <Checkout />
-            }
+            },
+            {
+                path: "/account",
+                element: <Account />,
+                routes: [
+                    {
+                        path: "",
+                        element: <AccountHome />
+                    },
+                    {
+                        path: "info",
+                        element: <Info />
+                    },
+                    {
+                        path: "orders",
+                        element: <Orders />
+                    }
+                ]
+            },
         ]
     },
     {
