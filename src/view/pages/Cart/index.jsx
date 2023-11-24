@@ -4,7 +4,7 @@ import { CartContext } from '../../../context/CartContext'
 import { AuthContext } from '../../../context/AuthContext'
 import { toast } from 'react-toastify'
 
-const Cart = () => {
+const Cart = () => { 
     const { cartItems, addToCart, removeFromCart, getCartTotal } = useContext(CartContext)
     const { accessToken } = useContext(AuthContext)
     console.log(cartItems)

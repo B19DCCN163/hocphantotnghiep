@@ -4,8 +4,9 @@ import { Link, NavLink } from 'react-router-dom'
 import { AuthContext } from '../../../../context/AuthContext'
 import { CartContext } from '../../../../context/CartContext'
 function Header() {
-    const { accessToken, setAccessToken } = useContext(AuthContext)
+    const { accessToken, setAccessToken, user } = useContext(AuthContext)
     const { cartItems } = useContext(CartContext)
+    console.log(user)
     return (
         <div className='app-header'>
             <Container>
@@ -32,12 +33,17 @@ function Header() {
                             </div>
                             <div >Giỏ hàng</div>
                         </Link>
-                        <Link to="/admin" className="header-item">
-                            <div className="icon">
-                                <i className="fa-solid fa-circle-info"></i>
-                            </div>
-                            <div>Admin</div>
-                        </Link>
+                        {user?.length > 0 && user[0].role === 1
+
+                            &&
+                            <Link to="/admin" className="header-item">
+                                <div className="icon">
+                                    <i className="fa-solid fa-circle-info"></i>
+                                </div>
+                                <div>Admin</div>
+                            </Link>
+                        }
+
                         {accessToken ? <Link to="/account" className="header-item">
                             <div className="icon">
                                 <i className="fa-solid fa-user"></i>

@@ -3,6 +3,7 @@ import Container from '../Common/Container'
 import { AuthContext } from '../../../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../../../services/Api/auth'
+import { toast } from 'react-toastify';
 function Login() {
     const navigate = useNavigate();
     const { setUser, setAccessToken, accessToken } = useContext(AuthContext)
@@ -29,14 +30,16 @@ function Login() {
             return;
         }
         setLoading(true)
-        const userLogin = await login(data);
+        const userLogin = await login(data); // Gọi ở đây( th)
         if (userLogin.status === 200) {
             console.log(userLogin.data)
             setUser(userLogin.data.user)
             setAccessToken(userLogin.data.accessToken)
+            toast.success("Đăng nhập thành công")
             navigate('/')
             setLoading(false)
         } else {
+
             setErrorLogin('Tài khoản mật khẩu không chính xác')
         }
         setLoading(false)
@@ -50,7 +53,7 @@ function Login() {
                         <div className="heading">
                             Đăng nhập
                         </div>
-                        {errorLogin && <span>{errorLogin}</span>}
+                        {errorLogin && <span style={{ color: "red" }}>{errorLogin}</span>}
                         <form className="login-form" onSubmit={handleLogin}>
                             <div className="form-input">
                                 <input type="text"
@@ -59,7 +62,7 @@ function Login() {
                                     name='username' placeholder='Email/SĐT' />
                             </div>
                             <div className="form-input">
-                                <input type="text"
+                                <input type="password"
                                     value={data.password}
                                     onChange={handleChange}
                                     name='password'

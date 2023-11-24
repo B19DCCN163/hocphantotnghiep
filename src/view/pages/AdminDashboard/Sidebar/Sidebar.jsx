@@ -6,7 +6,7 @@ function Sidebar() {
     <div className='dashboard-sidebar'>
       <NavLink to='/admin/products' className="sidebar-item">
         <div className="icon">
-          <i class="fa-solid fa-pen"></i>
+          <i className="fa-solid fa-pen"></i>
         </div>
         <div className="name">
           Products
@@ -14,7 +14,7 @@ function Sidebar() {
       </NavLink>
       <NavLink to="/admin/orders" className="sidebar-item">
         <div className="icon">
-          <i class="fa-solid fa-bag-shopping"></i>
+          <i className="fa-solid fa-bag-shopping"></i>
         </div>
         <div className="name">
           Orders
@@ -22,7 +22,7 @@ function Sidebar() {
       </NavLink>
       <NavLink to="/admin/users" className="sidebar-item">
         <div className="icon">
-          <i class="fa-solid fa-users"></i>
+          <i className="fa-solid fa-users"></i>
         </div>
         <div className="name">
           Users

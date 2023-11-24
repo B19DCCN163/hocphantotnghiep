@@ -46,7 +46,19 @@ const register = async (req, res) => {
 }
 
 
+const getAllUser = async (req, res) => {
+    try {
+
+        const [rows, fields] = await pool.query("SELECT * FROM user")
+
+        res.status(200).json({ users: rows })
+    } catch (errorr) {
+        res.status(500).json("Lỗi csdl")
+    }
+}
+
 module.exports = {
     login,
-    register
+    register,
+    getAllUser
 }

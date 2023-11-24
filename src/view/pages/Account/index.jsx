@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../context/AuthContext'
-import { toast } from 'react-toastify'
 
 function Account() {
     const { user, logout, accessToken } = useContext(AuthContext)
@@ -43,7 +42,6 @@ function Account() {
                         <div className="user-logout" onClick={() => {
                             logout();
                             navigate('/');
-                            toast.warning("Đăng xuất thành công")
 
                         }}>
                             Đăng xuất

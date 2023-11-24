@@ -19,7 +19,8 @@ const buyProduct = async (req, res) => {
         res.status(500).json({ err: "Lỗi server" })
     }
 }
-const getListOrder = async (req, res) => {
+
+const getListOrderById = async (req, res) => {
     try {
         const { id } = req.query
         const [rows, fields] = await pool.query("Select * FROM order_table WHERE user_id = ?", [id])
@@ -57,8 +58,37 @@ const getListOrder = async (req, res) => {
         res.status(500).json({ er: "lỗi" })
     }
 }
+const getAllOrder = async (req, res) => {
+    try {
+        const query = `
+                        SELECT 
+                            order_table.id AS order_id,
+                            order_table.date,
+                            orderdetail.id AS order_detail_id,
+                            orderdetail.quantity,
+                            product.name AS product_name,
+                            product.base_price,
+                            user.username,
+                            product.thumb_url AS thumb_url
+                        FROM 
+                            order_table
+                        JOIN 
+                            orderdetail ON order_table.id = orderdetail.order_id
+                        JOIN 
+                            product ON orderdetail.product_id = product.id
+                        JOIN
+                            user ON user.id = order_table.user_id
+                        `
+        const [rows, fields] = await pool.query(query)
+
+        res.status(200).json(rows)
+    } catch (err) {
+        res.status(500).json({ er: "lỗi" })
+    }
+}
 
 module.exports = {
     buyProduct,
-    getListOrder
+    getListOrderById,
+    getAllOrder
 }

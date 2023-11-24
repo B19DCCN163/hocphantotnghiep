@@ -16,6 +16,8 @@ import Account from "../view/pages/Account";
 import Info from "../view/pages/Account/Info";
 import Orders from "../view/pages/Account/Orders";
 import AccountHome from "../view/pages/Account/Home";
+import AddProduct from "../view/pages/AdminDashboard/components/AddProduct";
+import EditProduct from "../view/pages/AdminDashboard/components/EditProduct";
 
 
 const routes = [
@@ -82,6 +84,14 @@ const routes = [
             {
                 path: "products",
                 element: <ManageProduct />
+            },
+            {
+                path: "products/add",
+                element: <AddProduct />
+            },
+            {
+                path: "products/edit/:id",
+                element: <EditProduct />
             },
             {
                 path: "orders",

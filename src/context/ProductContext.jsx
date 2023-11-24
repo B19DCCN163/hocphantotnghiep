@@ -3,7 +3,6 @@ import { getListProduct } from '../services/Api/product'
 export const ProductContext = createContext()
 function ProductProvider({ children }) {
     const [products, setProducts] = useState([])
-
     useEffect(() => {
         const getData = async () => {
             const data = await getListProduct()
@@ -15,7 +14,8 @@ function ProductProvider({ children }) {
         <ProductContext.Provider value={
             {
                 products,
-                setProducts
+                setProducts,
+         
             }
         }>
             {children}
