@@ -1,9 +1,11 @@
 import React, { useContext, useEffect } from 'react'
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../context/AuthContext'
+import { CartContext } from '../../../context/CartContext'
 
 function Account() {
     const { user, logout, accessToken } = useContext(AuthContext)
+    const {clearCart} = useContext(CartContext)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -41,6 +43,7 @@ function Account() {
                         </div>
                         <div className="user-logout" onClick={() => {
                             logout();
+                            clearCart();
                             navigate('/');
 
                         }}>

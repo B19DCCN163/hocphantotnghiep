@@ -17,6 +17,16 @@ const getProductsById = async (req, res) => {
         res.status(500).json('Lỗi')
     }
 }
+const searchProduct = async (req, res) => {
+    try {
+        const { keyword } = req.params
+        const queryString = "SELECT * FROM product WHERE name LIKE ?";
+        const [rows, fields] = await pool.query(queryString, [`%${keyword}%`]);
+        res.status(200).json({ product: rows })
+    } catch (err) {
+        res.status(500).json('Lỗi')
+    }
+}
 const addProduct = async (req, res) => {
     try {
         const { name, desc, price, thumb_url, stock } = req.body
@@ -65,5 +75,6 @@ module.exports = {
     getProductsById,
     addProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    searchProduct
 }

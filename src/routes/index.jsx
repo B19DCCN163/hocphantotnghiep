@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "../view/pages/Home";
+import Search from "../view/pages/Search"
 import AdminDashboard from "../view/pages/AdminDashboard";
 import ProductList from "../view/pages/ProductList";
 import Cart from "../view/pages/Cart";
@@ -52,6 +53,10 @@ const routes = [
             {
                 path: "cart/checkout",
                 element: <Checkout />
+            },
+            {
+                path: "search",
+                element: <Search />
             },
             {
                 path: "/account",
